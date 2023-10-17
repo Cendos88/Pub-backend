@@ -26,7 +26,7 @@ public class User implements UserDetails {
     private String password;
     private boolean isActive;
     private boolean isAdult;
-    private int Pocket;
+    private int pocket;
     @Enumerated(EnumType.STRING)
     private Role role;
 

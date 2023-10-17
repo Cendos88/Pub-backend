@@ -13,6 +13,6 @@ public class RegisterRequest {
     private String name;
     private String password;
     private boolean isAdult;
-    private int Pocket;
+    private int pocket;
     private boolean isActive;
 }
