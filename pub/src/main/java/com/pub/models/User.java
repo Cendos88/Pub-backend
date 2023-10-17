@@ -23,7 +23,6 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String email;
     private String password;
     private boolean isActive;
     private boolean isAdult;

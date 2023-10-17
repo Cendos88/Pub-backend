@@ -1,5 +1,8 @@
 package com.pub.controllers;
 
+import com.pub.models.AuthenticationResponse;
+import com.pub.models.LoginRequest;
+import com.pub.models.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 
