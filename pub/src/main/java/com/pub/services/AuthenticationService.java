@@ -17,7 +17,6 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
-
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .name(request.getName())
@@ -36,10 +35,10 @@ public class AuthenticationService {
 
     public AuthenticationResponse login(LoginRequest request) {
         authenticationManager.authenticate(
-               new UsernamePasswordAuthenticationToken(
-                       request.getName(),
-                       request.getPassword()
-               )
+                new UsernamePasswordAuthenticationToken(
+                        request.getName(),
+                        request.getPassword()
+                )
         );
         var user = repository.findByName(request.getName())
                 .orElseThrow();

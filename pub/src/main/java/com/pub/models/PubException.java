@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PubException extends Throwable{
+public class PubException extends Throwable {
     private String message;
 }

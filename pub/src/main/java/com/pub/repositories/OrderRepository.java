@@ -1,9 +1,9 @@
 package com.pub.repositories;
 
-import com.pub.models.Drink;
+import com.pub.models.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DrinkRepository extends JpaRepository<Drink, Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 }
