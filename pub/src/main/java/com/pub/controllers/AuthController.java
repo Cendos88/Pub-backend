@@ -2,6 +2,7 @@ package com.pub.controllers;
 
 import com.pub.models.AuthenticationResponse;
 import com.pub.models.LoginRequest;
+import com.pub.models.PubException;
 import com.pub.models.RegisterRequest;
 import com.pub.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,14 @@ public class AuthController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
+    public ResponseEntity<?> register(
             @RequestBody RegisterRequest request
     ) {
-        return ResponseEntity.ok(authenticationService.register(request));
+        try {
+            return ResponseEntity.ok(authenticationService.register(request));
+        } catch (PubException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")

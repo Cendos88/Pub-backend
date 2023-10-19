@@ -17,7 +17,10 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(RegisterRequest request) throws PubException {
+        if(request.getPocket()<0){
+            throw new PubException("You need money to drink");
+        }
         var user = User.builder()
                 .name(request.getName())
                 .pocket(request.getPocket())
