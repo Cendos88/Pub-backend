@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +17,7 @@ public class UserDTOOut {
     private boolean isActive;
     private boolean isAdult;
     private int pocket;
+    private List<OrderDTO> orders;
 
     public UserDTOOut(User user) {
         this.id = user.getId();

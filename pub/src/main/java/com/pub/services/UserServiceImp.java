@@ -1,7 +1,10 @@
 package com.pub.services;
 
+import com.pub.models.Order;
+import com.pub.models.OrderDTO;
 import com.pub.models.User;
 import com.pub.models.UserDTOOut;
+import com.pub.repositories.OrderRepository;
 import com.pub.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImp implements UserService {
     private final UserRepository userRepository;
+    private final OrderRepository orderRepository;
 
     @Override
     public List<UserDTOOut> getAllUsers() {
@@ -27,6 +31,9 @@ public class UserServiceImp implements UserService {
     @Override
     public UserDTOOut getUser(Integer id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
-        return new UserDTOOut(user);
+        UserDTOOut userOut= new UserDTOOut(user);
+        List<OrderDTO> usersOrders = orderRepository.getOrdersForUser(id);
+        userOut.setOrders(usersOrders);
+        return userOut;
     }
 }
