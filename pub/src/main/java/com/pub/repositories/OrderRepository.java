@@ -1,10 +1,6 @@
 package com.pub.repositories;
 
-import com.pub.models.DrinkOrderSummary;
-import com.pub.models.Order;
-import com.pub.models.OrderDTO;
-import com.pub.models.OrderSummary;
-
+import com.pub.models.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -33,7 +29,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "FROM Order o " +
             "JOIN User u ON o.userId = u.id " +
             "JOIN Drink d ON o.drinkId = d.id")
-    List<DrinkOrderSummary.UserOrderSummary> getOrdersForAllUsers();
+    List<UserOrderSummary> getOrdersForAllUsers();
 
     @Query("SELECT o.id AS id, d.productName AS productName, o.price AS price " +
             "FROM Order o " +

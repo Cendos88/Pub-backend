@@ -6,6 +6,7 @@ import com.pub.models.PubException;
 import com.pub.models.User;
 import com.pub.repositories.DrinkRepository;
 import com.pub.repositories.OrderRepository;
+import com.pub.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.List;
 public class PubServiceImp implements PubService {
     private final DrinkRepository drinkRepository;
     private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<Drink> getAllDrinks() {
@@ -32,8 +34,13 @@ public class PubServiceImp implements PubService {
         if (!user.isAdult() && drinkRepository.findById(order.getDrinkId()).get().isForAdult()) {
             throw new PubException("You are not adult");
         }
+        if(!user.isActive()){
+            user.setActive(true);
+        }
+        user.setPocket(user.getPocket() - order.getPrice());
+        userRepository.save(user);
         orderRepository.save(order);
-        return user.getPocket() - order.getPrice();
+        return user.getPocket() ;
 
     }
 }

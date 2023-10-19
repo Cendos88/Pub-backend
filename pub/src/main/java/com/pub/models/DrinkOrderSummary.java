@@ -10,9 +10,5 @@ public interface DrinkOrderSummary {
 
     int getPrice();
 
-    interface UserOrderSummary {
-        Integer getUserId();
-        String getProductName();
-        int getPrice();
-    }
+
 }

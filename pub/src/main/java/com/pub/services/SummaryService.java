@@ -1,14 +1,11 @@
 package com.pub.services;
 
 
-
-
 import com.pub.models.DrinkOrderSummary;
 import com.pub.models.OrderSummary;
-
+import com.pub.models.UserOrderSummary;
 import com.pub.repositories.DrinkRepository;
 import com.pub.repositories.OrderRepository;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +21,11 @@ public class SummaryService {
         return orderRepository.getOrderSummary();
     }
 
-    public List<DrinkOrderSummary> getDrinkOrderSummary(){
+    public List<DrinkOrderSummary> getDrinkOrderSummary() {
         return orderRepository.getOrdersForAllDrinks();
     }
-    public List<DrinkOrderSummary.UserOrderSummary> getUserOrderSummary(){
+
+    public List<UserOrderSummary> getUserOrderSummary() {
         return orderRepository.getOrdersForAllUsers();
     }
 

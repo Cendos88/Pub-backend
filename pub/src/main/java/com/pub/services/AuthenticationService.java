@@ -21,7 +21,7 @@ public class AuthenticationService {
         var user = User.builder()
                 .name(request.getName())
                 .pocket(request.getPocket())
-                .isActive(true)
+                .isActive(false)
                 .isAdult(request.isAdult())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.GUEST)

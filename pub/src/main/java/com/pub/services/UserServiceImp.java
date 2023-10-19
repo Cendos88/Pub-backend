@@ -1,6 +1,5 @@
 package com.pub.services;
 
-import com.pub.models.Order;
 import com.pub.models.OrderDTO;
 import com.pub.models.User;
 import com.pub.models.UserDTOOut;
@@ -31,7 +30,7 @@ public class UserServiceImp implements UserService {
     @Override
     public UserDTOOut getUser(Integer id) {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
-        UserDTOOut userOut= new UserDTOOut(user);
+        UserDTOOut userOut = new UserDTOOut(user);
         List<OrderDTO> usersOrders = orderRepository.getOrdersForUser(id);
         userOut.setOrders(usersOrders);
         return userOut;

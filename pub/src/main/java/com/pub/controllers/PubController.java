@@ -5,7 +5,6 @@ import com.pub.models.PubException;
 import com.pub.services.PubService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,7 @@ public class PubController {
         return ResponseEntity.ok(pubService.getAllDrinks());
     }
 
-    @PostMapping("buy")
+    @PostMapping("/buy")
     public ResponseEntity<?> buyDrink(@RequestBody Order order) {
         try {
             return ResponseEntity.ok(pubService.buyDrink(order));
