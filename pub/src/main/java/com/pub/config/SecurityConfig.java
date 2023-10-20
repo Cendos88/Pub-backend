@@ -29,7 +29,6 @@ public class SecurityConfig {
                 .requestMatchers("/auth/**")
                 .permitAll()
                 .requestMatchers("/drink-menu").hasRole(GUEST.name())
-
                 .requestMatchers("/buy").hasRole("GUEST")
                 .requestMatchers("/summary/**").hasRole("BARTENDER")
                 .requestMatchers("/users/**").hasRole("BARTENDER")

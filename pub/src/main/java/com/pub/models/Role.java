@@ -14,18 +14,18 @@ public enum Role {
     BARTENDER(
             Set.of(BARTENDER_READ)),
     GUEST(
-            Set.of(GUEST_READ,GUEST_WRITE));
+            Set.of(GUEST_READ, GUEST_WRITE));
 
 
     @Getter
     private final Set<Permission> permissions;
 
-    public List<SimpleGrantedAuthority> getAuthorities(){
+    public List<SimpleGrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new java.util.ArrayList<>(getPermissions()
                 .stream()
                 .map(permission -> new SimpleGrantedAuthority(permission.name()))
                 .toList());
-        authorities.add(new SimpleGrantedAuthority("ROLE_"+this.name()));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
         return authorities;
     }
 

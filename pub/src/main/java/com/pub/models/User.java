@@ -25,7 +25,7 @@ public class User implements UserDetails {
     private Integer id;
     private String name;
     private String password;
-    private boolean isActive= false;
+    private boolean isActive = false;
     private boolean isAdult;
     private int pocket;
     @Enumerated(EnumType.STRING)

@@ -34,13 +34,13 @@ public class PubServiceImp implements PubService {
         if (!user.isAdult() && drinkRepository.findById(order.getDrinkId()).get().isForAdult()) {
             throw new PubException("You are not adult");
         }
-        if(!user.isActive()){
+        if (!user.isActive()) {
             user.setActive(true);
         }
         user.setPocket(user.getPocket() - order.getPrice());
         userRepository.save(user);
         orderRepository.save(order);
-        return user.getPocket() ;
+        return user.getPocket();
 
     }
 }
