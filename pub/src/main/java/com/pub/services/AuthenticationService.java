@@ -18,7 +18,15 @@ public class AuthenticationService {
 
 
     public AuthenticationResponse register(RegisterRequest request) throws PubException {
-        if (request.getPocket() < 0) {
+        if (request.getName() == null || request.getName().isEmpty()) {
+            throw new PubException("Name is required");
+        }
+        if (request.getPassword() == null || request.getPassword().isEmpty()) {
+            throw new PubException("Password is required");
+        }
+
+
+        if (request.getPocket() <= 0) {
             throw new PubException("You need money to drink");
         }
         var user = User.builder()

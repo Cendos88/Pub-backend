@@ -4,10 +4,12 @@ import com.pub.services.SummaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/summary")
 public class SummaryController {
     private final SummaryService summaryService;
 
@@ -16,7 +18,7 @@ public class SummaryController {
         return ResponseEntity.ok(summaryService.getOrderSummary());
     }
 
-    @GetMapping("/drinks")
+    @GetMapping("/product")
     public ResponseEntity getAllDrinks() {
         return ResponseEntity.ok(summaryService.getDrinkOrderSummary());
     }
