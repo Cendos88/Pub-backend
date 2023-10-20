@@ -15,4 +15,5 @@ public class RegisterRequest {
     private boolean isAdult;
     private int pocket;
     private boolean isActive;
+    private String role;
 }

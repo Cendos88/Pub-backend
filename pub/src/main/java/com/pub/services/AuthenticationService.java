@@ -8,6 +8,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import static com.pub.models.Role.BARTENDER;
+import static com.pub.models.Role.GUEST;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -34,9 +37,12 @@ public class AuthenticationService {
                 .pocket(request.getPocket())
                 .isActive(false)
                 .isAdult(request.isAdult())
+                .role(GUEST)
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.GUEST)
                 .build();
+        if(request.getRole().equals("BARTENDER")){
+            user.setRole(BARTENDER);
+        }
         repository.save(user);
         var jwt = jwtTokenService.generateToken(user);
         return AuthenticationResponse.builder()
